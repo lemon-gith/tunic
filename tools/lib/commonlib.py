@@ -1,5 +1,11 @@
-import re, os, subprocess, shlex
+import re
+import os
+import subprocess
+import shlex
 import dbglib as dbg
+import time
+import stat
+
 
 def launchSlurmJob(job_name, cmd, slurm_dep_l, flog_path):
     slurm_file = job_name + ".slurm"
@@ -40,7 +46,7 @@ def launchSlurmJob(job_name, cmd, slurm_dep_l, flog_path):
 
     # Get job ID
     match = re.match("Submitted batch job (\d+)\n", out)
-    if match != None:
+    if match is not None:
         job_id = int(match.group(1))
         dbg.print_info("Submitted batch job %d" % job_id)
         return job_id
@@ -70,7 +76,7 @@ def strInFile(fpath, str_l):
     # File was opened and read
     for s in str_l:
         m = re.search(s, fdata)
-        if m == None:
+        if m is None:
             return False
 
     return True

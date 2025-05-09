@@ -1,4 +1,6 @@
-import os, yaml, shlex, sys
+import os
+import yaml
+import shlex
 import subprocess as subp
 # User Modules
 import config as cfg
@@ -151,6 +153,6 @@ class Sim(Test):
 def readTestConfig(cfg_name):
     cfg_path = os.path.join(cfg.TB_CONFIG_DIR, cfg_name)
     with open(cfg_path, 'r') as ymlfile:
-        run_cfg = yaml.load(ymlfile)
+        run_cfg = yaml.load(ymlfile, Loader=yaml.SafeLoader)
 
     return run_cfg

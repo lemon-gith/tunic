@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 
 from argparse import ArgumentParser
 import sys
@@ -7,7 +7,8 @@ from libconfig import *
 import testlib as test
 import dbglib as dbg
 import config as cfg
-       
+
+
 def main():
     parser = ArgumentParser()
     parser._action_groups.pop()
@@ -26,11 +27,11 @@ def main():
         tb_dir = cfg.TB_SIM_DIR
 
     elif args.type == "unit":
-        print "Not implemented in this version"
+        print("Not implemented in this version")
         sys.exit(0)
  
     elif args.type == "system":
-        print "Not implemented in this version"
+        print("Not implemented in this version")
         sys.exit(0)
 
     dbg.DEBUG = args.debug
@@ -43,6 +44,7 @@ def main():
         test_inst = test_class(design_name, tb_dir, run_cfg[design_name])
         res_code = test_inst.Run()
         sys.exit(res_code)
+
 
 if __name__ == "__main__":
     main()

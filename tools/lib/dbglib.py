@@ -1,4 +1,5 @@
-import sys, inspect
+import sys
+import inspect
 
 LOG_LEVEL_ERROR     = 0
 LOG_LEVEL_WARNING   = 1
@@ -28,24 +29,24 @@ def getFuncLine():
 def print_debug(msg, fstream=DEFAULT_LOG_STREAM):
     if DEBUG:
         msg_print = clr.CYAN + "[DEBUG] " + getFuncLine() + clr.RST_CLR + ": " + msg.strip()
-        print >> fstream, msg_print
+        print(msg_print, file=fstream)
 
 def print_info(msg, fstream=DEFAULT_LOG_STREAM):
     if LOG_LEVEL >= LOG_LEVEL_ALL:
         msg_print = clr.BLUE + "[INFO]  " + getFuncLine() + clr.RST_CLR + ": " + msg.strip()
-        print >> fstream, msg_print
+        print(msg_print, file=fstream)
 
 def print_warning(msg, fstream=DEFAULT_LOG_STREAM):
     if LOG_LEVEL >= LOG_LEVEL_WARNING:
         msg_print = clr.YELLOW + "[WARN]  " + getFuncLine() + clr.RST_CLR + ": " + msg.strip()
-        print >> fstream, msg_print
+        print(msg_print, file=fstream)
 
 def print_error(msg, fstream=DEFAULT_LOG_STREAM):
     if LOG_LEVEL >= LOG_LEVEL_ERROR:
         msg_print = clr.RED + "[ERROR] " + getFuncLine() + clr.RST_CLR + ": " + msg.strip()
-        print >> fstream, msg_print
+        print(msg_print, file=fstream)
 
 def print_success(msg, fstream=DEFAULT_LOG_STREAM):
     if LOG_LEVEL >= LOG_LEVEL_ALL:
         msg_print = clr.GREEN + "[PASS]  " + getFuncLine() + clr.RST_CLR + ": " + msg.strip()
-        print >> fstream, msg_print
+        print(msg_print, file=fstream)
